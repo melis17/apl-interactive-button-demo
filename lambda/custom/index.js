@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Interactive APL Button Demo! Press the button to learn how I work. Then go see the code on GitHub.'
+    const speechText = 'APLボタンデモへようこそ。ボタンを押して、どのように動くかを学びましょう。次に、GitHubのコードを参照してください。'
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -43,12 +43,12 @@ const HelpIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
   },
   handle(handlerInput) {
-    const speechText = 'Press the button.'
+    const speechText = 'ボタンを押してください'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Press the button and checkout GitHub for the source code.', speechText)
+      .withSimpleCard('ボタンを押してください。ソースコードはGithubで確認できます。', speechText)
       .getResponse()
   },
 };
@@ -64,7 +64,7 @@ const CancelAndStopIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Thanks for trying the demo. You could find the code on GitHub', speechText)
+      .withSimpleCard('デモをお試しいただきありがとうございます。コードはGitHubで見つけることができます。', speechText)
       .getResponse()
   },
 };
@@ -86,7 +86,7 @@ const ErrorHandler = {
   },
   handle(handlerInput, error) {
     console.log(`Error handled: ${error.message}`)
-    const speechText = 'I had trouble processing that request. Please try again and if the issue persists, please contact the skill developer. What can I help you with?'
+    const speechText = 'リクエストの処理に問題がありました。もう一度やり直してください。問題が解決しない場合は、スキル開発者に連絡してください。何かお助けできますか？'
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
